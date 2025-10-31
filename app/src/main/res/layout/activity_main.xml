@@ -1,60 +1,152 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="24dp"
-    android:background="#1E1E1E"
-    android:gravity="center">
+    android:background="#1E1E1E">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="CKPool Widget Settings"
-        android:textSize="24sp"
-        android:textColor="#FFFFFF"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:layout_marginBottom="32dp"/>
+        android:orientation="vertical"
+        android:padding="24dp">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Bitcoin Address"
-        android:textSize="16sp"
-        android:textColor="#FFFFFF"
-        android:textStyle="bold"
-        android:layout_marginBottom="8dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Bitaxe Widget Settings"
+            android:textSize="24sp"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginBottom="32dp"/>
 
-    <EditText
-        android:id="@+id/bitcoin_address_input"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Enter your Bitcoin address"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#888888"
-        android:background="#2C2C2E"
-        android:padding="16dp"
-        android:inputType="text"
-        android:layout_marginBottom="24dp"/>
+        <!-- Bitcoin Address Section -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Bitcoin Address"
+            android:textSize="16sp"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp"/>
 
-    <Button
-        android:id="@+id/save_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Save Address"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:padding="16dp"/>
+        <EditText
+            android:id="@+id/bitcoin_address_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter your Bitcoin address"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#888888"
+            android:background="#2C2C2E"
+            android:padding="16dp"
+            android:inputType="text"
+            android:layout_marginBottom="32dp"/>
 
-    <TextView
-        android:id="@+id/status_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:textColor="#00FF00"
-        android:gravity="center"
-        android:layout_marginTop="16dp"
-        android:textSize="14sp"/>
+        <!-- Color Section -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Text Colors"
+            android:textSize="16sp"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:layout_marginBottom="16dp"/>
 
-</LinearLayout>
+        <!-- Rate Color -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="12dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Rate Color:"
+                android:textColor="#CCCCCC"
+                android:textSize="14sp"/>
+
+            <Button
+                android:id="@+id/rate_color_button"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="#00FF00"
+                android:textSize="12sp"/>
+
+        </LinearLayout>
+
+        <!-- Shares Color -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="12dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Shares Color:"
+                android:textColor="#CCCCCC"
+                android:textSize="14sp"/>
+
+            <Button
+                android:id="@+id/shares_color_button"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="#00BFFF"
+                android:textSize="12sp"/>
+
+        </LinearLayout>
+
+        <!-- Best Color -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="24dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Best Color:"
+                android:textColor="#CCCCCC"
+                android:textSize="14sp"/>
+
+            <Button
+                android:id="@+id/best_color_button"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="#FFD700"
+                android:textSize="12sp"/>
+
+        </LinearLayout>
+
+        <!-- Save Button -->
+        <Button
+            android:id="@+id/save_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Save Settings"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:padding="16dp"/>
+
+        <TextView
+            android:id="@+id/status_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="#00FF00"
+            android:gravity="center"
+            android:layout_marginTop="16dp"
+            android:textSize="14sp"/>
+
+    </LinearLayout>
+
+</ScrollView>

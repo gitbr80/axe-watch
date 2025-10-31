@@ -50,6 +50,20 @@ public class CKPoolWidget extends AppWidgetProvider {
 
     static void updateAppWidget(Context context, AppWidgetManager appWidgetManager, int appWidgetId) {
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget_layout);
+// Load colors from settings
+        SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        String rateColor = prefs.getString("rate_color", "#00FF00");
+        String sharesColor = prefs.getString("shares_color", "#00BFFF");
+        String bestColor = prefs.getString("best_color", "#FFD700");
+
+// Apply colors to widget
+        try {
+            views.setTextColor(R.id.hashrate_text, android.graphics.Color.parseColor(rateColor));
+            views.setTextColor(R.id.shares_text, android.graphics.Color.parseColor(sharesColor));
+            views.setTextColor(R.id.best_text, android.graphics.Color.parseColor(bestColor));
+        } catch (Exception e) {
+            // Invalid color, use defaults
+        }
 
         // Set up click to manually refresh
         Intent intent = new Intent(context, CKPoolWidget.class);
