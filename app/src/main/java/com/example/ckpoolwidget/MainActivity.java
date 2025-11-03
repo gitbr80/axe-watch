@@ -118,10 +118,62 @@ public class MainActivity extends AppCompatActivity {
 
         EditText colorInput = dialogView.findViewById(R.id.color_hex_input);
         View colorPreview = dialogView.findViewById(R.id.color_preview);
+        android.widget.GridLayout colorGrid = dialogView.findViewById(R.id.color_grid);
 
+        // Preset colors - lots of options!
+        String[] presetColors = {
+                // Reds
+                "#FF0000", "#FF3333", "#FF6666", "#CC0000", "#990000", "#660000",
+                // Oranges
+                "#FF8800", "#FFAA00", "#FF6600", "#CC6600", "#994C00", "#663300",
+                // Yellows
+                "#FFFF00", "#FFFF66", "#FFCC00", "#FFD700", "#FFA500", "#FF8C00",
+                // Greens
+                "#00FF00", "#00FF66", "#00CC00", "#009900", "#33FF33", "#66FF66",
+                // Cyans
+                "#00FFFF", "#00CCCC", "#009999", "#66FFFF", "#33CCCC", "#00CED1",
+                // Blues
+                "#0000FF", "#3333FF", "#6666FF", "#0066FF", "#0099FF", "#00BFFF",
+                // Purples
+                "#8800FF", "#AA00FF", "#CC00FF", "#6600CC", "#9933FF", "#CC66FF",
+                // Pinks/Magentas
+                "#FF00FF", "#FF66FF", "#FF33CC", "#CC0099", "#FF1493", "#FF69B4",
+                // Whites/Grays
+                "#FFFFFF", "#CCCCCC", "#999999", "#666666", "#333333", "#000000"
+        };
+
+        // Create color buttons in grid
+        int buttonSize = 100; // dp
+        float density = getResources().getDisplayMetrics().density;
+        int buttonSizePx = (int) (buttonSize * density / 6); // Divide to fit 6 columns
+
+        for (String color : presetColors) {
+            Button colorButton = new Button(this);
+            android.widget.GridLayout.LayoutParams params = new android.widget.GridLayout.LayoutParams();
+            params.width = buttonSizePx;
+            params.height = buttonSizePx;
+            params.setMargins(4, 4, 4, 4);
+            colorButton.setLayoutParams(params);
+
+            try {
+                colorButton.setBackgroundColor(Color.parseColor(color));
+            } catch (Exception e) {
+                continue;
+            }
+
+            colorButton.setOnClickListener(v -> {
+                colorInput.setText(color);
+                colorPreview.setBackgroundColor(Color.parseColor(color));
+            });
+
+            colorGrid.addView(colorButton);
+        }
+
+        // Set initial preview
         colorInput.setText(currentColor);
         colorPreview.setBackgroundColor(Color.parseColor(currentColor));
 
+        // Live preview as user types
         colorInput.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
