@@ -115,13 +115,10 @@ public class MainActivity extends AppCompatActivity {
                 long manualBest = Long.parseLong(manualBestStr);
                 editor.putLong(PREF_MANUAL_BEST, manualBest);
 
-                // Also update PREF_BEST_EVER to ensure it's at least this value
-                long currentBest = prefs.getLong("best_ever", 0);
-                if (manualBest > currentBest) {
-                    editor.putLong("best_ever", manualBest);
-                    // Don't set a date for manual entries
-                    editor.putString("best_date", "");
-                }
+                // ALWAYS override best_ever with manual input (allows correction of accidental high values)
+                editor.putLong("best_ever", manualBest);
+                // Clear date for manual entries since we don't know when it occurred
+                editor.putString("best_date", "");
             } catch (NumberFormatException e) {
                 statusText.setText("Invalid best share value");
                 statusText.setTextColor(Color.parseColor("#FF0000"));
