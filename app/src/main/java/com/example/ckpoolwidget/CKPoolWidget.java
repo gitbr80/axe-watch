@@ -287,7 +287,7 @@ public class CKPoolWidget extends AppWidgetProvider {
             String finalPoolBlockInfo = poolBlockInfo;
 
             new Handler(Looper.getMainLooper()).post(() -> {
-                String topInfo = "     ₿ " + finalBitcoinPrice + " | Last pool block: " + finalPoolBlockInfo;
+                String topInfo = "        ₿ " + finalBitcoinPrice + " | Last pool block: " + finalPoolBlockInfo;
                 views.setTextViewText(R.id.top_info_text, topInfo);
                 appWidgetManager.updateAppWidget(appWidgetId, views);
             });
