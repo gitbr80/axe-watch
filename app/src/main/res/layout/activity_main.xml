@@ -42,6 +42,36 @@
             android:inputType="text"
             android:layout_marginBottom="32dp"/>
 
+        <!-- Manual Best Share Section -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Manual Best Share Override"
+            android:textSize="16sp"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Enter a best share value to prevent reset (optional)"
+            android:textSize="12sp"
+            android:textColor="#888888"
+            android:layout_marginBottom="8dp"/>
+
+        <EditText
+            android:id="@+id/manual_best_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="e.g., 1000000000000"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#888888"
+            android:background="#2C2C2E"
+            android:padding="16dp"
+            android:inputType="number"
+            android:layout_marginBottom="32dp"/>
+
         <!-- Color Section -->
         <TextView
             android:layout_width="match_parent"
