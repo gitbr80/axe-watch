@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/top_info_text"
         android:orientation="horizontal"
-        android:gravity="center"
+        android:gravity="center_horizontal|top"
         android:layout_marginTop="4dp"
         android:paddingTop="8dp"
         android:paddingBottom="4dp"
@@ -66,6 +66,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:minHeight="12dp"
                 android:layout_marginTop="0dp"
                 android:includeFontPadding="false"
                 android:text=""
@@ -118,6 +119,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:minHeight="12dp"
                 android:layout_marginTop="0dp"
                 android:includeFontPadding="false"
                 android:text=""
@@ -171,6 +173,7 @@
                 android:id="@+id/best_date_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:minHeight="12dp"
                 android:layout_marginTop="0dp"
                 android:includeFontPadding="false"
                 android:text=""
