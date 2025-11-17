@@ -3,19 +3,21 @@
     android:id="@+id/widget_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="4dp"
-    android:background="#2C2C2E">
+    android:padding="8dp"
+    android:background="@drawable/widget_background">
 
     <!-- Top info bar: Bitcoin price and pool block -->
     <TextView
         android:id="@+id/top_info_text"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="     ₿ Loading... | Last pool block: Loading..."
-        android:textSize="12sp"
-        android:textColor="#888888"
+        android:textSize="11sp"
+        android:textColor="#999999"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"/>
+        android:layout_alignParentStart="true"
+        android:paddingBottom="6dp"
+        android:fontFamily="sans-serif-medium"/>
 
     <!-- Main stats container -->
     <LinearLayout
@@ -24,7 +26,9 @@
         android:layout_below="@id/top_info_text"
         android:orientation="horizontal"
         android:gravity="center"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="4dp"
         android:baselineAligned="false">
 
         <!-- Rate Column -->
@@ -33,25 +37,31 @@
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:gravity="center_horizontal">
+            android:gravity="center_horizontal"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Rate:"
-                android:textSize="20sp"
-                android:textColor="#999999"
-                android:layout_marginBottom="0dp"
-                android:includeFontPadding="false"/>
+                android:text="RATE"
+                android:textSize="11sp"
+                android:textColor="#777777"
+                android:layout_marginBottom="2dp"
+                android:includeFontPadding="false"
+                android:fontFamily="sans-serif-medium"
+                android:letterSpacing="0.05"/>
 
             <TextView
                 android:id="@+id/hashrate_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Loading..."
-                android:textSize="20sp"
+                android:textSize="22sp"
                 android:textColor="#00FF00"
-                android:includeFontPadding="false"/>
+                android:includeFontPadding="false"
+                android:fontFamily="sans-serif-condensed"
+                android:textStyle="bold"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -63,6 +73,14 @@
                 android:textSize="9sp" />
 
         </LinearLayout>
+
+        <!-- Separator -->
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/column_separator"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"/>
 
         <!-- Shares Column -->
         <LinearLayout
@@ -70,25 +88,31 @@
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:gravity="center_horizontal">
+            android:gravity="center_horizontal"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Shares:"
-                android:textSize="20sp"
-                android:textColor="#999999"
-                android:layout_marginBottom="0dp"
-                android:includeFontPadding="false"/>
+                android:text="SHARES"
+                android:textSize="11sp"
+                android:textColor="#777777"
+                android:layout_marginBottom="2dp"
+                android:includeFontPadding="false"
+                android:fontFamily="sans-serif-medium"
+                android:letterSpacing="0.05"/>
 
             <TextView
                 android:id="@+id/shares_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Loading..."
-                android:textSize="20sp"
+                android:textSize="22sp"
                 android:textColor="#00BFFF"
-                android:includeFontPadding="false"/>
+                android:includeFontPadding="false"
+                android:fontFamily="sans-serif-condensed"
+                android:textStyle="bold"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -101,31 +125,45 @@
 
         </LinearLayout>
 
+        <!-- Separator -->
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/column_separator"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"/>
+
         <!-- Best Column -->
         <LinearLayout
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:gravity="center_horizontal">
+            android:gravity="center_horizontal"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Best:"
-                android:textSize="20sp"
-                android:textColor="#999999"
-                android:layout_marginBottom="0dp"
-                android:includeFontPadding="false"/>
+                android:text="BEST"
+                android:textSize="11sp"
+                android:textColor="#777777"
+                android:layout_marginBottom="2dp"
+                android:includeFontPadding="false"
+                android:fontFamily="sans-serif-medium"
+                android:letterSpacing="0.05"/>
 
             <TextView
                 android:id="@+id/best_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Loading..."
-                android:textSize="20sp"
+                android:textSize="22sp"
                 android:textColor="#FFD700"
-                android:includeFontPadding="false"/>
+                android:includeFontPadding="false"
+                android:fontFamily="sans-serif-condensed"
+                android:textStyle="bold"/>
 
             <TextView
                 android:id="@+id/best_date_text"
@@ -135,8 +173,8 @@
                 android:includeFontPadding="false"
                 android:text=""
                 android:textColor="#666666"
-                android:textSize="9sp" />
-
+                android:textSize="9sp"
+                android:fontFamily="sans-serif"/>
 
         </LinearLayout>
 

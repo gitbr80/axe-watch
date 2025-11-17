@@ -24,8 +24,10 @@ public class MainActivity extends AppCompatActivity {
     private static final String PREF_RATE_COLOR = "rate_color";
     private static final String PREF_SHARES_COLOR = "shares_color";
     private static final String PREF_BEST_COLOR = "best_color";
+    private static final String PREF_MANUAL_BEST = "manual_best";
 
     private EditText bitcoinAddressInput;
+    private EditText manualBestInput;
     private Button saveButton;
     private Button rateColorButton, sharesColorButton, bestColorButton;
     private TextView statusText;
@@ -40,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         bitcoinAddressInput = findViewById(R.id.bitcoin_address_input);
+        manualBestInput = findViewById(R.id.manual_best_input);
         saveButton = findViewById(R.id.save_button);
         statusText = findViewById(R.id.status_text);
         rateColorButton = findViewById(R.id.rate_color_button);
@@ -74,6 +77,12 @@ public class MainActivity extends AppCompatActivity {
         String savedAddress = prefs.getString(PREF_BITCOIN_ADDRESS, "");
         bitcoinAddressInput.setText(savedAddress);
 
+        // Load manual best share value
+        long manualBest = prefs.getLong(PREF_MANUAL_BEST, 0);
+        if (manualBest > 0) {
+            manualBestInput.setText(String.valueOf(manualBest));
+        }
+
         rateColor = prefs.getString(PREF_RATE_COLOR, "#00FF00");
         sharesColor = prefs.getString(PREF_SHARES_COLOR, "#00BFFF");
         bestColor = prefs.getString(PREF_BEST_COLOR, "#FFD700");
@@ -98,6 +107,31 @@ public class MainActivity extends AppCompatActivity {
         editor.putString(PREF_RATE_COLOR, rateColor);
         editor.putString(PREF_SHARES_COLOR, sharesColor);
         editor.putString(PREF_BEST_COLOR, bestColor);
+
+        // Save manual best share value
+        String manualBestStr = manualBestInput.getText().toString().trim();
+        if (!manualBestStr.isEmpty()) {
+            try {
+                long manualBest = Long.parseLong(manualBestStr);
+                editor.putLong(PREF_MANUAL_BEST, manualBest);
+
+                // Also update PREF_BEST_EVER to ensure it's at least this value
+                long currentBest = prefs.getLong("best_ever", 0);
+                if (manualBest > currentBest) {
+                    editor.putLong("best_ever", manualBest);
+                    // Don't set a date for manual entries
+                    editor.putString("best_date", "");
+                }
+            } catch (NumberFormatException e) {
+                statusText.setText("Invalid best share value");
+                statusText.setTextColor(Color.parseColor("#FF0000"));
+                return;
+            }
+        } else {
+            // Clear manual best if field is empty
+            editor.remove(PREF_MANUAL_BEST);
+        }
+
         editor.apply();
 
         statusText.setText("Settings saved! Widget will update soon.");
